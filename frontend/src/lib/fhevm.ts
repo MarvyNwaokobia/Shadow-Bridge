@@ -48,10 +48,12 @@ export async function getFhevmInstance(): Promise<unknown | null> {
     const sdk = await import("@zama-fhe/relayer-sdk/web");
 
     // Cover the export name change across SDK versions (init vs initSDK)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const initFn = (sdk as any).init ?? (sdk as any).initSDK ?? (sdk as any).default?.init;
     if (!initFn) throw new Error("No init function found in relayer-sdk/web — check SDK version");
     await initFn();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const createFn = (sdk as any).createInstance ?? (sdk as any).default?.createInstance;
     if (!createFn) throw new Error("createInstance not found in relayer-sdk/web");
 

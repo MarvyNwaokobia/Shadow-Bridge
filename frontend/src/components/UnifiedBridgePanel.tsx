@@ -1,19 +1,18 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useMemo, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   useAccount,
   useReadContract,
   useWriteContract,
-  useWatchContractEvent,
   useSwitchChain,
 } from "wagmi";
 import { maxUint256 } from "viem";
 import { ETH_CHAIN, BASE_CHAIN, ARB_CHAIN } from "@/lib/chains";
 import { ADDRESSES, ERC20_ABI, ETH_BRIDGE_ABI, DEST_BRIDGE_ABI } from "@/lib/contracts";
-import { encryptUsdcAmount, formatUsdc, isDemoMode } from "@/lib/fhevm";
-import { postRelay, saveLocalTx, upgradeLocalTx, useRelaySocket, type RelayWsMessage } from "@/lib/relay";
+import { encryptUsdcAmount, formatUsdc } from "@/lib/fhevm";
+import { saveLocalTx } from "@/lib/relay";
 import { TransactionStatus, TxState } from "./TransactionStatus";
 
 // ── Types & Data ──────────────────────────────────────────────────────────────
@@ -123,6 +122,7 @@ function ChainBox({
         overflow: "hidden",
         flexShrink: 0
       }}>
+         {/* eslint-disable-next-line @next/next/no-img-element */}
          <img src={chain.icon} alt={chain.shortName} style={{ width: "28px", height: "28px", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
@@ -153,11 +153,6 @@ export function UnifiedBridgePanel() {
   const [toId, setToId] = useState<number>(BASE_CHAIN.id);
   const [amount, setAmount] = useState("");
   const [txState, setTxState] = useState<TxState>({ status: "idle" });
-
-  const [activeBurnTxHash, setActiveBurnTxHash] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    return sessionStorage.getItem("sb_active_burn_tx");
-  });
 
   const fromChain = CHAINS.find((c) => c.id === fromId)!;
   const toChain = CHAINS.find((c) => c.id === toId)!;
@@ -250,6 +245,7 @@ export function UnifiedBridgePanel() {
             }}
           />
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", background: "black", padding: "0.5rem 1rem", borderRadius: "100px", cursor: "pointer", border: "1px solid var(--border-default)" }}>
+             {/* eslint-disable-next-line @next/next/no-img-element */}
              <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" style={{ width: 24, height: 24 }} alt="USDC" />
              <span style={{ fontWeight: 800, color: "white", fontSize: "1rem" }}>USDC</span>
              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ opacity: 0.5 }}>
