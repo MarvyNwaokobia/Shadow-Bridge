@@ -218,7 +218,7 @@ export function UnifiedBridgePanel() {
       {/* Network Config */}
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
          <ChainBox label="From" chainId={fromId} onSelect={setFromId} availableIds={CHAINS.map(c => c.id)} />
-         <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--bg-elevated)", display: "flex", alignItems: "center", justifyCenter: "center", color: "var(--text-muted)", zIndex: 5, border: "4px solid var(--bg-surface)", margin: "0 -16px" }}>
+         <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--bg-elevated)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-muted)", zIndex: 5, border: "4px solid var(--bg-surface)", margin: "0 -16px" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>

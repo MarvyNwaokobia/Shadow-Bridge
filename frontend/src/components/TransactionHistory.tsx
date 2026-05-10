@@ -280,7 +280,7 @@ function ArrowRightIcon() {
 function EmptyState({ connected }: { connected: boolean }) {
   return (
     <div style={{ padding: "4rem 2rem", textAlign: "center" }}>
-      <div style={{ width: 48, height: 48, background: "var(--bg-elevated)", border: "1px solid var(--border-default)", display: "flex", alignItems: "center", justifyCenter: "center", margin: "0 auto 1.5rem", borderRadius: "var(--radius-md)" }}>
+      <div style={{ width: 48, height: 48, background: "var(--bg-elevated)", border: "1px solid var(--border-default)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.5rem", borderRadius: "var(--radius-md)" }}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" style={{ margin: "auto" }}>
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
