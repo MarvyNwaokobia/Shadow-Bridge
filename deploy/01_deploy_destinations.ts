@@ -8,7 +8,7 @@ import {
   REWARD_RATE 
 } from "./ShadowBridgeConstants";
 
-const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+const func: DeployFunction= async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
   const network = hre.network.name;
